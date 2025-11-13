@@ -22,7 +22,7 @@ app.use(
   cors({
     origin:
       process.env.NODE_ENV === "production"
-        ? ["https://your-frontend-domain.com"]
+        ? ["https://note-to-email.vercel.app"]
         : ["http://localhost:3000", "http://localhost:3002"],
     credentials: true,
   })
