@@ -43,7 +43,7 @@ app.get("/auth/gmail/callback", (req, res) => {
 
   if (error) {
     return res.redirect(
-      `http://localhost:3000/auth/error?error=${encodeURIComponent(
+      `${process.env.FRONTEND_URL}/auth/error?error=${encodeURIComponent(
         error as string
       )}`
     )
@@ -52,7 +52,7 @@ app.get("/auth/gmail/callback", (req, res) => {
   if (code) {
     // Redirect to frontend with the authorization code
     return res.redirect(
-      `http://localhost:3000/auth/callback?code=${encodeURIComponent(
+      `${process.env.FRONTEND_URL}/auth/callback?code=${encodeURIComponent(
         code as string
       )}`
     )
@@ -68,7 +68,7 @@ app.get("/auth/nylas/callback", (req, res) => {
 
   if (error) {
     return res.redirect(
-      `http://localhost:3000/auth/error?error=${encodeURIComponent(
+      `${process.env.FRONTEND_URL}/auth/error?error=${encodeURIComponent(
         error as string
       )}`
     )
@@ -77,7 +77,9 @@ app.get("/auth/nylas/callback", (req, res) => {
   if (code) {
     // Redirect to frontend with the authorization code and state (user email)
     return res.redirect(
-      `http://localhost:3000/auth/nylas/callback?code=${encodeURIComponent(
+      `${
+        process.env.FRONTEND_URL
+      }/auth/nylas/callback?code=${encodeURIComponent(
         code as string
       )}&state=${encodeURIComponent(state as string)}`
     )
